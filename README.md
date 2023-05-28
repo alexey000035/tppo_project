@@ -17,6 +17,10 @@ tppo_project/web
 ```
 apt-get install python3-venv
 ```
+иногда надо
+```
+sudo apt-get install python3-venv
+```
 
 ## 4. Создать виртуальную среду:
 linux:
@@ -108,6 +112,10 @@ create database imit;
 
 ```
 flask db upgrade
+```
+Может иногда потребоваться перед выполнением команды прописать
+```
+pip install python-dotenv
 ```
 
 ## 12. Перейти в директорию с репозиторием проекта и запустить сервер
