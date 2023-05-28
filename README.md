@@ -5,12 +5,12 @@
 
 ## 1. Выполнить clone репозитория: 
 ```
-git clone https://github.com/alexey000035/1000-and-1
+git clone https://github.com/alexey000035/tppo_project
 ```
 
 ## 2. Перейти в директорию проекта:
 ```
-cd 1000-and-1/web
+tppo_project/web
 ```
 
 ## 3. Установить пакеты(Для linux):
