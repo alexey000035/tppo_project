@@ -1,6 +1,6 @@
 DEBUG = False
 TESTING = False
-LOG_FILE = "/home/filya/TPPO2/imit/logs/imit.log"
+LOG_FILE = "/home/filya/TPPO2/tppo_project/imit/logs/imit.log"
 #SQLITE_DATABASE_PATH = "//path/to/sqlitedb/imit.db"
 MYSQL_USER = "root"
 MYSQL_PASSWORD = "Timit2!0"
