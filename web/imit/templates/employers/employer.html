@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+{% block title %}Вакансия: {{ employer.name }}{% endblock %}
+{% block head %}
+    <meta property="og:type" content="website"/>
+    {% if employer.has_cover_image %}
+        <meta property="og:image" content="https://imit.petrsu.ru/files/covers/ci_{{ employer.id }}.png"/>
+    {% endif %}
+    <meta property="og:url" content="https://imit.petrsu.ru/news/{{ employer.id }}"/>
+{% endblock %}
+
+{% block content %}
+    <b>{{ employer.date.strftime('%d.%m.%Y') }}</b>
+    &nbsp;
+    <span class="title">{{ employer.name }}</span>
+    <br/>
+    
+    <main>
+        <div class="post-content">
+            {% if employer.has_cover_image %}
+                <div style="float:left; margin-right: 25px;">
+		    <a href="/files/covers/{{ employer.logo }}" rel="prettyPhoto[{{ employer.id}}]">
+                    <img src="/files/covers/ci_{{ employer.id }}.png"
+                     alt="" height="75"
+		     />
+		    </a>
+                    <br/>
+                </div>
+            {% endif %}
+            <div class="news-text">
+                <h3> Описание компании </h3>
+                {{ employer.desc_company|safe }}
+            </div>
+            <a href ='{{ employer.link}}'> {{employer.link}} </a>
+        </div>
+        <br/>
+
+        <div>
+            <h3> Информация о контактном лице </h3>
+            <p> Имя: {{agent.name|safe}}</p>
+            <p> Фамилия: {{agent.surname|safe}}</p>
+            <p> Отчество: {{agent.second_name}}</p>
+            <p> Почта: {{agent.email}}</p>
+            <p> Телефон: {{agent.phone}}</p>
+            <p> Мессенджер: {{agent.telegram}}</p>
+        </div>
+    </main>
+    {% if current_user.is_authenticated and current_user.has_role('editor') %}
+        <!---
+        <input type="submit" onclick="openForm()" value="Удалить информацию о вакансии">
+        <div id="myModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form>
+                    <p> Точно хотите удалить информацию о партнере?</p>
+                    <a href="/employers/{{ employer.id }}/delete">Удалить информацию о вакансии</a>
+                </form>
+            </div>
+        </div>
+        --->
+        <p class="news-links">
+            <a href="/employers/{{ employer.id }}/edit">Редактировать информацию о вакансии</a> 
+        </p>
+        <p class="news-links">
+            <a href="/employers/{{ employer.id }}/delete">Удалить информацию о вакансии</a>
+        </p>
+        <!---
+        <input type="submit" onclick="openForm()" value="Удалить информацию о контактном лице">
+        
+        <div id="myModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form>
+                    <p> Точно хотите удалить информацию о контактном лице?</p>
+                    <a href="/employers/{{ agent.id_empl }}/delete">Удалить информацию о контактном лице</a>
+                </form>
+            </div>
+        </div>
+        --->
+        <p class="news-links">
+            <a href="/employers/agent/{{ agent.id_empl }}/edit">Редактировать информацию о партнере</a> 
+        </p>s
+       
+       
+    {% endif %}
+    <script>
+        function openForm() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "block";
+
+            var closeBtn = document.getElementsByClassName("close")[0];
+            closeBtn.onclick = function() {
+                modal.style.display = "none";
+            }
+            
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
+    </script>
+{% endblock %}

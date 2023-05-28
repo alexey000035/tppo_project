@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block title %}Предложенные новости{% endblock %}
+
+
+
+{% block content %}
+<a href="/drafts/drafts_news">Черновики новостей</a> |
+<a href="/drafts/drafts_ads">Черновики объявлений</a> |
+<a href="/drafts/responderse">Предложенные новости</a>
+<hr />
+{% for sug_post in sug_posts %}
+    <div class="sug_post">
+
+	    {% if (sug_post.title.strip()) %}
+
+		      <a href='/drafts/responderse/{{ sug_post.id }}'><span class="title ">
+		      {{ sug_post.title }}
+		      </span></a>
+        {% endif %}
+        
+    <div class="post-content">
+            {% if sug_post.has_cover_image %}
+                <div style="float:left; margin-right: 10px;">
+		    <a href="/files/covers/{{ sug_post.cover_image }}" rel="prettyPhoto[{{ sug_post.id}}]">
+                    <img src="/files/covers/ci_{{ sug_post.id }}.png" alt=""
+                         full-cover-image="/files/covers/{{ sug_post.cover_image }}"
+                         height="75"/> </a><br/>
+                </div>
+            {% endif %}
+	    {% if (sug_post.title.strip()) %}
+            {% if sug_post.short_text %}
+
+                <div class="news-text">{{ sug_post.short_text | safe }} </div>
+
+            {% endif %}
+        {% endif %}
+        </div>
+    </div>
+    <div style="clear: left; height: 0.5em;"></div>
+    <div>
+                <p>
+                    <a href="/drafts/responderse/{{ sug_post.id }}/edit">Редактировать</a> |
+                    <a href="/drafts/responderse/{{ sug_post.id }}/delete">Удалить</a>
+                </p>
+    </div>
+{% endfor %}
+{% endblock %}
