@@ -13,20 +13,20 @@ class LoginForm(FlaskForm):
                               validators.Length(min=3, max=30)])
 
 class AdsForm(FlaskForm):
-    description = TextAreaField("Текст", [validators.InputRequired()])
+    description = TextAreaField("Текст", [validators.InputRequired()], render_kw={'style': 'width: 100%; height: 200px'})
     date = StringField("Date", [validators.Optional(),
                                 validators.Regexp(r"^\d\d\.\d\d\.\d\d\d\d$")])
     #date = StringField("Date", [validators.Optional(), validators.Regexp(r"^\d\d\d\d.\d\d\.\d\d$")])
 
 class DraftAdsForm(FlaskForm):
-    description = TextAreaField("Текст", [validators.InputRequired()])
+    description = TextAreaField("Текст", [validators.InputRequired()], render_kw={'style': 'width: 100%; height: 200px'})
     
 
 class NewsForm(FlaskForm):
     title = StringField("Заголовок",
                         [validators.InputRequired(),
                          validators.Length(min=3, max=256,
-                                           message="Необходим текст не более 256 символов и не менее 3")])
+                                           message="Необходим текст не более 256 символов и не менее 3")], render_kw={'style': 'width: 100%'})
     delete_cover_image = BooleanField("", default=False)
     full_cover_image = MultipleFileField("Титульное изображение",
                                  [validators.Optional(), FileAllowed(['jpg', 'png', 'jpeg', 'gif'],
@@ -34,26 +34,26 @@ class NewsForm(FlaskForm):
     cropped_cover_image_data = \
         HiddenField("", [validators.Optional(),
                          validators.Regexp(r"^data:image\/png;base64,[A-Za-z0-9!$&',()*+;=\-._~:@\/?%\s]+$")])
-    full_text = TextAreaField("Текст", [validators.InputRequired()])
+    full_text = TextAreaField("Текст", [validators.InputRequired()], render_kw={'style': 'width: 100%; height: 200px'})
     date = StringField("Дата", [validators.Optional(),
                                 validators.Regexp(r"^\d\d\.\d\d\.\d\d\d\d$")])
 
 class MenuForm(FlaskForm):
-    link = StringField("Ссылка")
+    link = StringField("Ссылка", render_kw={'style': 'width: 100%'})
     name = StringField("Заголовок",
                         [validators.InputRequired(),
                          validators.Length(min=3, max=100,
-                                           message="Необходим текст не более 100 символов и не менее 1")])
+                                           message="Необходим текст не более 100 символов и не менее 1")], render_kw={'style': 'width: 100%'})
     size = IntegerField("Размер заголовка(h2 или h3)", [validators.InputRequired(),
                          validators.NumberRange(min=2, max=3,
                                            message="Необходимо число от 2 до 3")], default=2)
-    father = StringField("К какому пункту меню относится ",default=None)
+    father = StringField("К какому пункту меню относится ",default=None, render_kw={'style': 'width: 100%'})
     number = IntegerField("Номер пункта меню")
 
 class InitUserForm(FlaskForm):
     uid = StringField("Имя пользователя",
                       [validators.InputRequired(message="Обязательно к заполнению"),
-                       validators.Length(min=3, max=30)])
+                       validators.Length(min=3, max=30)], render_kw={'style': 'width: 100%'})
 
 
 class CreateCustomUserForm(FlaskForm):
