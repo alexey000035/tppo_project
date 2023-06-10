@@ -13,4 +13,3 @@
 2023-05-30 10:38:39,820 DEBUG: News with id 11 is being deleted [in /home/filya/TPPO2/tppo_project/web/imit/controllers/news.py:151]
 2023-05-30 10:38:44,059 DEBUG: News with id 10 is being deleted [in /home/filya/TPPO2/tppo_project/web/imit/controllers/news.py:151]
 2023-05-30 10:38:44,061 ERROR: Error occurred during cover image deletion: [Errno 2] No such file or directory: 'imit/static/files/covers/post_10_1.png' [in /home/filya/TPPO2/tppo_project/web/imit/controllers/news.py:354]
-2023-06-10 18:42:36,956 ERROR: LDAP error: invalid server address [in /home/filya/TPPO2/tppo_project/web/imit/models.py:426]
