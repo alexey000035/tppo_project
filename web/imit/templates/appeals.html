@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block title %}Список обращений{% endblock %}
+
+{% block content %}
+<h1 class="title">Список обращений</h1>
+{% if full %}
+    <p>Года:
+        {% for y in years %}
+            {% if y == cur_year and year_selected %}
+                <b>{{ y }}</b>
+            {% else %}
+                <a href="/news?year={{ y }}">{{ y }}</a>
+            {% endif %}
+        {% endfor %}
+    </p>
+{% endif %}
+
+{% for appeal in appeals %}
+    <div class="news">
+        <b>{{ appeal.date_appeal.strftime('%d.%m.%Y') }}</b>
+        &nbsp;
+        <a href='/appeals/{{ appeal.id }}'><span class="title ">
+        {{ appeal.theme }}
+        </span></a>
+        <br/>
+        {% if not appeal.state %}
+        <div style="color: red">Необработанно</div>
+        {% else %}
+        <div style="color: green">Обработанно</div>
+        {% endif %}
+    </div>
+    <div>
+    <p>
+        <a href="/appeals/{{ appeal.id }}/checked">Отметить</a>
+    </p>
+    </div>
+{% endfor %}
+<hr/>
+{% if years is defined %}
+    <p>Года:
+        {% for y in years %}
+            {% if y == cur_year and year_selected %}
+                <b>{{ y }}</b>
+            {% else %}
+                <a href="/news?year={{ y }}">{{ y }}</a>
+            {% endif %}
+        {% endfor %}
+    {% if not full %}| <a href="/news">Архив</a>{% endif %}    
+    </p>
+{% endif %}
+{% endblock %}

@@ -104,8 +104,8 @@ body {
     font-style: normal;
     font-size: 12pt;
     background: white url(/images/body-tail.gif) repeat top center;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1920px;
+    margin: 0 5%;
     padding: 0px 12px 12px 12px;
     line-height: 1.3em;
 }
@@ -435,7 +435,7 @@ ul.topnav {
 /* Float the list items side by side */
 ul.topnav li {float: left;}
 
-@media screen and (max-width:680px) {
+@media screen and (max-width:1500px) {
   #header-images, h1#title, .head-title, #menu {
     display:none;
   }

@@ -287,6 +287,41 @@ def delete_news(nid):
     db.session.commit()
     return redirect('/news')
 
+@app.route('/news/contacting', methods=('GET', 'POST'))
+def contacting_the_directorate():
+    add_form = forms.AppealForm()
+    if request.method == 'POST':
+        if add_form.validate_on_submit():
+            appeal = models.Appeal()
+            add_form.populate_obj(appeal)
+            appeal.date_appeal = datetime.now()
+            db.session.add(appeal)
+            db.session.commit()
+
+            return redirect(f'/news')
+        else:
+            app.logger.warning(f"Invalid NewsForm input: {get_form_errors(add_form)}")
+            flash_errors(add_form)
+    return render_template('contacting_the_directorate.html', add_form = add_form)
+
+@app.route('/appeals')
+@role_required('editor')
+def appeals():
+    try:
+        year = int(request.args.get("year", datetime.now().year))
+        end_year = datetime.strptime(str(year + 1), "%Y")
+        year = datetime.strptime(str(year), "%Y")
+        year_selected = True
+    except ValueError:
+        year = datetime.strptime("2016", "%Y")
+        end_year = datetime.now()
+        year_selected = False
+
+    years = range(2016, datetime.now().year + 1)
+    appeals = models.Appeal.query.filter(models.Appeal.date_appeal.between(year, end_year)) \
+        .order_by(desc(models.Appeal.date_appeal))
+    return render_template('appeals.html', full=True, appeals=appeals, cur_year=year.year, years=years, year_selected=year_selected)
+
 def _save_image(data, file, post, i, type_post):
     app.logger.debug("Adding cover image to news %s", post.id)
     if data is None or post is None:

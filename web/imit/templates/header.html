@@ -90,6 +90,7 @@
         <li><a href="/">Главная</a></li>
         {% if current_user.is_authenticated and current_user.has_role('editor') %}
           <li><a href="/drafts">Черновики</a></li>
+          <li><a href="/appeals">Обращения</a></li>
         {% endif %}
         <li><a href="/page/about" class="drop">Институт</a></li>
         <li><a href="https://imit.petrsu.ru/files/2021/f_666_graphic_2021_2022.pdf">График
@@ -136,6 +137,7 @@
         <li class="one"><a href="/">Главная</a></li>
         {% if current_user.is_authenticated and current_user.has_role('editor') %}
           <li><a href="/drafts">Черновики</a></li>
+          <li><a href="/appeals">Обращения</a></li>
         {% endif %}
         <li><a href="/page/about" class="drop">Институт</a><!-- Begin Home Item -->
 

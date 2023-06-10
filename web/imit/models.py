@@ -298,6 +298,21 @@ class File(db.Model):
                 "file_name": self.file_name, "uploaded": self.uploaded.strftime("%Y.%m.%d") if self.uploaded else None,
                 "downloading_path": self.downloading_path}
 
+class Appeal(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(256))
+    last_name = db.Column(db.String(256))
+    surname = db.Column(db.String(256))
+    student_group = db.Column(db.String(256))
+    contact = db.Column(db.String(256))
+    theme = db.Column(db.String(256))
+    full_text = db.Column(db.String(256))
+    date_appeal = db.Column(db.DateTime())
+    state = db.Column(db.Boolean)
+    
+    def __init__(self, date=None):
+        if date is None:
+            self.date_appeal = datetime.now()  # TODO: check for timezone
 
 class Page(db.Model):
     id = db.Column(db.Integer, primary_key=True)

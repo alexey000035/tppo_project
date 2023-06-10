@@ -45,8 +45,7 @@ body, ul, li {
         text-align:center;
         position:relative;
         padding: 0px 10px 4px 10px;
-        margin-right:5px;
-        margin-top:5px;
+        margin: auto
         border:none;
 }
 
