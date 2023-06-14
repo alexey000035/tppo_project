@@ -132,27 +132,24 @@ class AppealForm(FlaskForm):
     first_name = StringField("Имя",
                         [validators.InputRequired(),
                          validators.Length(min=3, max=256,
-                                           message="Необходим текст не более 256 символов и не менее 3")], render_kw={'style': 'width: 100%'})
+                                           message="Необходим текст не более 256 символов и не менее 3")], render_kw={'style': 'width: 40%'})
     last_name = StringField("Фамилия",
                         [validators.InputRequired(),
                          validators.Length(min=3, max=256,
-                                           message="Необходим текст не более 256 символов и не менее 3")], render_kw={'style': 'width: 100%'})
-    surname = StringField("Отчество",
-                        [validators.InputRequired(),
-                         validators.Length(min=3, max=256,
-                                           message="Необходим текст не более 256 символов и не менее 3")], render_kw={'style': 'width: 100%'})
+                                           message="Необходим текст не более 256 символов и не менее 3")], render_kw={'style': 'width: 40%'})
+    surname = StringField("Отчество", render_kw={'style': 'width: 40%'})
     student_group = StringField("Группа",
                         [validators.InputRequired(),
                          validators.Length(min=3, max=256,
-                                           message="Необходим текст не более 256 символов и не менее 3")], render_kw={'style': 'width: 100%'})
+                                           message="Необходим текст не более 256 символов и не менее 3")], render_kw={'style': 'width: 40%'})
     contact = StringField("Контакты для связи",
                         [validators.InputRequired(),
                          validators.Length(min=3, max=256,
-                                           message="Необходим текст не более 256 символов и не менее 3")], render_kw={'style': 'width: 100%'})
+                                           message="Необходим текст не более 256 символов и не менее 3")], render_kw={'style': 'width: 40%'})
     theme = StringField("Тема обращения",
                         [validators.InputRequired(),
                          validators.Length(min=3, max=256,
-                                           message="Необходим текст не более 256 символов и не менее 3")], render_kw={'style': 'width: 100%'})
+                                           message="Необходим текст не более 256 символов и не менее 3")], render_kw={'style': 'width: 40%'})
     full_text = TextAreaField("Текст обращения", [validators.InputRequired()], render_kw={'style': 'width: 100%; height: 200px'})
     date_appeal = StringField("Дата", [validators.Optional(),
                                 validators.Regexp(r"^\d\d\.\d\d\.\d\d\d\d$")])
