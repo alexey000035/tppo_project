@@ -19,4 +19,15 @@
         
         <input type="submit"  name="publish" value="Отправить"/>
     </form>
+    <script type="text/javascript">
+        const myForm = document.getElementById('myForm');;
+        
+        myForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // отменяем действие по умолчанию, чтобы форма не отправлялась
+
+            alert('Обращение отправлено'); // выводим сообщение после отправки формы
+            
+            myForm.submit();
+        });
+    </script>
 {% endblock %}

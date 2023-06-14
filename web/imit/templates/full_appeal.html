@@ -3,11 +3,20 @@
 
 {% block content %}
     <b>{{ appeal.date_appeal.strftime('%d.%m.%Y') }}</b>
-    <span class="title">{{ appeal.theme }}</span>
-    <br/>
     <br/>
     <div class="post-content">
-      <div class="news-text">{{ appeal.full_text }}</div>
+      <p>Информация о студенте:</p>
+      <p>Имя: {{ appeal.first_name}}</p>
+      <p>Фамилия: {{ appeal.last_name}}</p>
+      {% if not appeal.surname == "" %}
+          <p>Отчество: {{ appeal.surname}}</p>
+      {% endif %}
+      {% if not appeal.student_group == "" %}
+          <p>Группа: {{ appeal.student_group}}</p>
+      {% endif %}
+      <p>Контакты для связи: {{ appeal.contact }}</p>
+      <p>Тема обращения: {{ appeal.theme }}</p>
+      <p>Текст обращения: {{ appeal.full_text }}</p>
     </div>
     <p>
         {% if not appeal.state %}
