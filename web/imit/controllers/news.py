@@ -322,6 +322,21 @@ def appeals():
         .order_by(desc(models.Appeal.date_appeal))
     return render_template('appeals.html', full=True, appeals=appeals, cur_year=year.year, years=years, year_selected=year_selected)
 
+@app.route('/appeals/<nid>')
+@role_required('editor')
+def appeal_full_text(nid):
+    appeal = models.Appeal.query.get_or_404(nid)
+    return render_template('full_appeal.html', appeal=appeal)
+
+@app.route('/appeals/<nid>/checked')
+@role_required('editor')
+def appeals_checked(nid):
+    appeal = models.Appeal.query.get_or_404(nid)
+    appeal.state = 1;
+    db.session.add(appeal)
+    db.session.commit()
+    return redirect('/appeals')
+
 def _save_image(data, file, post, i, type_post):
     app.logger.debug("Adding cover image to news %s", post.id)
     if data is None or post is None:
