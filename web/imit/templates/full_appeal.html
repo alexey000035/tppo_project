@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %}Обращение: {{ appeal.theme }}{% endblock %}
+
+{% block content %}
+    <b>{{ appeal.date_appeal.strftime('%d.%m.%Y') }}</b>
+    <span class="title">{{ appeal.theme }}</span>
+    <br/>
+    <br/>
+    <div class="post-content">
+      <div class="news-text">{{ appeal.full_text }}</div>
+    </div>
+    <p>
+        {% if not appeal.state %}
+            <a href="/appeals/{{ appeal.id }}/checked">Отметить</a>
+        {% endif %}
+    </p>
+{% endblock %}

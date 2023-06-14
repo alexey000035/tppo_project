@@ -9,13 +9,13 @@
     <form id="myForm"  method="POST" enctype="multipart/form-data" {% if action is defined %}action="{{ action }}"{% endif %}>
         {{ add_form.csrf_token }}
         {{ add_form.date_appeal(style="display:none") }}<br/>
-        {{ add_form.first_name.label }} {{ add_form.first_name() }} <br/>
-        {{ add_form.last_name.label }} {{ add_form.last_name() }} <br/>
-        {{ add_form.surname.label }} {{ add_form.surname() }} <br/>
-        {{ add_form.student_group.label }} {{ add_form.student_group() }} <br/>
-        {{ add_form.contact.label }} {{ add_form.contact() }} <br/>
-        {{ add_form.theme.label }} {{ add_form.theme() }} <br/>
-        {{ add_form.full_text.label }} {{ add_form.full_text() }} <br/>
+        {{ add_form.first_name.label }} <br/>{{ add_form.first_name() }} <br/>
+        {{ add_form.last_name.label }} <br/>{{ add_form.last_name() }} <br/>
+        {{ add_form.surname.label }} <br/>{{ add_form.surname() }} <br/>
+        {{ add_form.student_group.label }} <br/>{{ add_form.student_group() }} <br/>
+        {{ add_form.contact.label }} <br/>{{ add_form.contact() }} <br/>
+        {{ add_form.theme.label }} <br/>{{ add_form.theme() }} <br/>
+        {{ add_form.full_text.label }} <br/>{{ add_form.full_text() }} <br/>
         
         <input type="submit"  name="publish" value="Отправить"/>
     </form>

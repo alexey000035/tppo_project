@@ -31,7 +31,9 @@
     </div>
     <div>
     <p>
-        <a href="/appeals/{{ appeal.id }}/checked">Отметить</a>
+        {% if not appeal.state %}
+            <a href="/appeals/{{ appeal.id }}/checked">Отметить</a>
+        {% endif %}
     </p>
     </div>
 {% endfor %}
