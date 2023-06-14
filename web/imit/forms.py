@@ -138,10 +138,7 @@ class AppealForm(FlaskForm):
                          validators.Length(min=3, max=256,
                                            message="Необходим текст не более 256 символов и не менее 3")], render_kw={'style': 'width: 40%'})
     surname = StringField("Отчество", render_kw={'style': 'width: 40%'})
-    student_group = StringField("Группа",
-                        [validators.InputRequired(),
-                         validators.Length(min=3, max=256,
-                                           message="Необходим текст не более 256 символов и не менее 3")], render_kw={'style': 'width: 40%'})
+    student_group = StringField("Группа", render_kw={'style': 'width: 40%'})
     contact = StringField("Контакты для связи",
                         [validators.InputRequired(),
                          validators.Length(min=3, max=256,
