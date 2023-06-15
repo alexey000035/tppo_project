@@ -147,6 +147,8 @@ class AppealForm(FlaskForm):
                         [validators.InputRequired(),
                          validators.Length(min=3, max=256,
                                            message="Необходим текст не более 256 символов и не менее 3")], render_kw={'style': 'width: 40%'})
-    full_text = TextAreaField("Текст обращения", [validators.InputRequired()], render_kw={'style': 'width: 100%; height: 200px'})
+    full_text = TextAreaField("Текст обращения", [validators.InputRequired(),
+                         validators.Length(min=10, max=10000,
+                                           message="Необходим текст не более 10000 символов и не менее 10")], render_kw={'style': 'width: 100%; height: 200px'})
     date_appeal = StringField("Дата", [validators.Optional(),
                                 validators.Regexp(r"^\d\d\.\d\d\.\d\d\d\d$")])
